@@ -1,17 +1,36 @@
-const myLibrary = [];
-//constructor
-function Book(title, author, pageNo, isRead){
-    this.title = title; 
-    this.author = author;
-    this.pageNo = pageNo;
-    this.isRead = isRead;
-    this.info = function(){
-        return `${title} by ${author}, ${pageNo} pages, ${isRead?"read":"not read yet"}`
-    };
+import { addBookToLibrary, myLibrary } from "./module/libraryscript.js";
+
+const librarySection = document.querySelector(".myBooks");
+const addButton = document.querySelector(".add-book-btn");
+addButton.addEventListener("click", addNewBook);
+
+renderLibrary();
+
+function renderLibrary() {
+  // Clear existing content in librarySection
+  librarySection.innerHTML = "";
+
+  // Iterate through myLibrary and create a new element for each book
+  myLibrary.forEach((book) => {
+    // Create a new <div> element for each book
+    let newBookElement = document.createElement("div");
+    newBookElement.classList.add("book");
+    // Set the innerHTML or textContent of the new element
+    newBookElement.innerHTML = `
+            <h2>${book.title}</h2>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.pageNo}</p>
+            <p>Status: ${book.isRead ? "Read" : "Not read yet"}</p>
+        `;
+    // Append the newBookElement to the librarySection
+    librarySection.appendChild(newBookElement);
+    // console.log(newBookElement);
+  });
 }
-function addBookToLibrary(title, author, pageNo, isRead) {
-    if(title && author && pageNo && isRead){
-        myLibrary.push(new Book(title, author, pageNo, isRead));
-        console.log("Added"+myLibrary[myLibrary.length-1].info());
-    }else return;
-  }
+
+function addNewBook() {
+  console.log("clicked new button");
+
+  //use modal form to fetch data from user
+  //call addbooktolibrary with that data.
+}
