@@ -13,7 +13,8 @@ function Book(title, author, pageNo, isRead) {
 }
 export function addBookToLibrary(title, author, pageNo, isRead) {
   if (title && author && pageNo && isRead != undefined) {
-    myLibrary.push(new Book(title, author, pageNo, isRead));
+    const newBook = new Book(title, author, pageNo, isRead);
+    myLibrary.push(newBook);
     console.log("Added " + myLibrary[myLibrary.length - 1].info());
   } else return;
 }
