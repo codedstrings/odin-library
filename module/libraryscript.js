@@ -19,6 +19,14 @@ export function addBookToLibrary(title, author, pageNo, isRead) {
   } else return;
 }
 
+export function removeBookFromLibrary(index) {
+  myLibrary.splice(index, 1);
+}
+
+export function toggleBookReadStatus(index) {
+  myLibrary[index].isRead = !myLibrary[index].isRead;
+}
+
 //hardcoding initial 3 entries.
 addBookToLibrary("Harry Potter1", "J.K.Rowling", 400, false);
 addBookToLibrary("Harry Potter2", "J.K.Rowling", 450, true);
