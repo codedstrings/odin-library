@@ -1,11 +1,175 @@
-/* Dialog styling */
+:root {
+  --primary-color: #333;
+  --secondary-color: #555;
+  --accent-color: #c0392b;
+  --accent-hover-color: #e74c3c;
+  --background-color: #f4f4f9;
+  --text-color: #333;
+  --header-footer-bg-color: #333;
+  --header-footer-text-color: #fff;
+  --card-bg-color: #fff;
+  --card-border-color: #ddd;
+  --card-shadow-color: rgba(0, 0, 0, 0.1);
+  --dialog-bg-color: #fff;
+  --dialog-shadow-color: rgba(0, 0, 0, 0.2);
+  --dialog-backdrop-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--header-footer-bg-color);
+  color: var(--header-footer-text-color);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.library-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.add-book-div {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.add-book-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--header-footer-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+}
+
+.add-book-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.myBooks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.book {
+  background-color: var(--card-bg-color);
+  padding: 1rem;
+  border: 1px solid var(--card-border-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+}
+
+.book h2 {
+  margin-top: 0;
+}
+
+.book p {
+  margin: 0.5rem 0;
+}
+
+.toggle-read-btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  color: var(--header-footer-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-read-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.remove-book-btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  color: var(--header-footer-text-color);
+  background-color: var(--accent-color);
+  border: none;
+  cursor: pointer;
+}
+
+.remove-book-btn:hover {
+  background-color: var(--accent-hover-color);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: var(--header-footer-bg-color);
+  color: var(--header-footer-text-color);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer > p > a {
+  text-decoration: none;
+  color: inherit;
+}
+
 dialog {
   border: none;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px var(--dialog-shadow-color);
+  background-color: var(--dialog-bg-color);
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--dialog-backdrop-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 1rem;
+}
+
+form input,
+form button {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+form button {
+  margin-top: 1rem;
+  color: var(--header-footer-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--secondary-color);
+}
+
+#closeDialog {
+  margin-top: 1rem;
+  color: var(--header-footer-text-color);
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#closeDialog:hover {
+  background-color: var(--secondary-color);
 }
