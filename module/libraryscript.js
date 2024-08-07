@@ -1,13 +1,27 @@
 export const myLibrary = [];
-//constructor
-function Book(title, author, pageNo, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pageNo = pageNo;
-  this.isRead = isRead;
-  this.info = function () {
-    return `${title} by ${author}, ${pageNo} pages, ${
-      isRead ? "read" : "not read yet"
+//constructor function (old approach)
+// function Book(title, author, pageNo, isRead) {
+//   this.title = title;
+//   this.author = author;
+//   this.pageNo = pageNo;
+//   this.isRead = isRead;
+//   this.info = function () {
+//     return `${title} by ${author}, ${pageNo} pages, ${
+//       isRead ? "read" : "not read yet"
+//     }`;
+//   };
+// }
+
+class Book{
+  constructor(title, author, pageNo, isRead){
+    this.title = title;
+    this.author = author;
+    this.pageNo = pageNo;
+    this.isRead = isRead;
+  }
+  info = function () {
+    return `${this.title} by ${this.author}, ${this.pageNo} pages, ${
+      this.isRead ? "read" : "not read yet"
     }`;
   };
 }
