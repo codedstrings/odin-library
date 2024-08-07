@@ -1,9 +1,10 @@
-import {
-  addBookToLibrary,
-  myLibrary,
-  removeBookFromLibrary,
-  toggleBookReadStatus,
-} from "./module/libraryscript.js";
+import { Library } from "./module/libraryscript.js";
+
+let myLibrary = new Library();
+//hardcoding initial 3 entries.
+myLibrary.addBookToLibrary("Harry Potter1", "J.K.Rowling", 400, false);
+myLibrary.addBookToLibrary("Harry Potter2", "J.K.Rowling", 450, true);
+myLibrary.addBookToLibrary("Harry Potter3", "J.K.Rowling", 500, false);
 
 const librarySection = document.querySelector(".myBooks");
 const addButton = document.querySelector(".add-book-btn");
@@ -26,18 +27,16 @@ newBookForm.addEventListener("submit", (event) => {
   const pageNo = document.getElementById("pageNo").value;
   const isRead = document.getElementById("isRead").checked;
 
-  addBookToLibrary(title, author, parseInt(pageNo), isRead);
+  myLibrary.addBookToLibrary(title, author, parseInt(pageNo), isRead);
   renderLibrary();
   dialog.close();
   newBookForm.reset();
 });
 
-renderLibrary();
-
 function renderLibrary() {
   librarySection.innerHTML = "";
 
-  myLibrary.forEach((book, index) => {
+  myLibrary.books.forEach((book, index) => {
     let newBookElement = document.createElement("div");
     newBookElement.classList.add("book");
 
@@ -55,7 +54,7 @@ function renderLibrary() {
     newBookElement
       .querySelector(".remove-book-btn")
       .addEventListener("click", () => {
-        removeBookFromLibrary(index);
+        myLibrary.removeBookFromLibrary(index);
         renderLibrary();
       });
 
@@ -63,9 +62,11 @@ function renderLibrary() {
     newBookElement
       .querySelector(".toggle-read-btn")
       .addEventListener("click", () => {
-        toggleBookReadStatus(index);
+        myLibrary.toggleBookReadStatus(index);
         renderLibrary();
       });
     librarySection.appendChild(newBookElement);
   });
 }
+
+renderLibrary();
